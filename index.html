@@ -3,125 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salsabilah Amin Empires Limited</title>
+    <title>Salsabilah Gemini 3 Assistant</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background: linear-gradient(180deg, #060a13 0%, #020306 100%); 
-            color: #ffffff; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            padding: 24px 16px; 
-        }
-        .empire-card { 
-            background: rgba(10, 17, 31, 0.75); 
-            border: 1px solid rgba(255, 215, 0, 0.25); 
-            border-radius: 28px; 
-            padding: 40px 24px; 
-            max-width: 410px; 
-            width: 100%; 
-            text-align: center; 
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); 
-            backdrop-filter: blur(12px); 
-        }
-        .royal-badge { 
-            width: 85px; 
-            height: 85px; 
-            background: #040712; 
-            border: 1px solid #ffd700; 
-            border-radius: 50%; 
-            margin: 0 auto 20px auto; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.15); 
-        }
-        .badge-text { font-size: 9px; letter-spacing: 2px; color: #ffd700; font-weight: bold; text-transform: uppercase; }
-        h1 { font-size: 22px; font-weight: 800; color: #ffffff; letter-spacing: 0.5px; line-height: 1.3; margin-bottom: 6px; }
-        .motto { font-size: 13px; color: rgba(255, 255, 255, 0.7); margin-bottom: 4px; font-style: italic; }
-        .dedication { font-size: 12px; color: #ffd700; font-weight: 600; letter-spacing: 1px; margin-bottom: 24px; }
-        .line-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent); margin: 20px 0; }
-        .pillar-box { background: rgba(255, 255, 255, 0.03); border-radius: 16px; padding: 16px; margin: 12px 0; text-align: left; border-left: 4px solid #ffd700; }
-        .pillar-box h3 { font-size: 14px; color: #ffd700; font-weight: 600; }
-        .pillar-box p { font-size: 12px; color: rgba(255, 255, 255, 0.8); margin-top: 4px; line-height: 1.4; }
-        .domain-status { font-size: 11px; color: rgba(255, 255, 255, 0.5); margin: 8px 0; font-family: monospace; }
-        
-        /* Business Hub Styles */
-        .boost-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            padding: 20px 16px;
-            margin: 15px 0;
-            text-align: center;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-        .boost-card h4 { font-size: 15px; color: #ffd700; font-weight: bold; margin-bottom: 6px; }
-        .boost-card p { font-size: 12px; color: rgba(255, 255, 255, 0.8); margin-bottom: 16px; line-height: 1.4; }
-        
-        .action-btn { display: block; background: #ffd700; color: #03050a; padding: 14px; margin-top: 24px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; letter-spacing: 0.5px; }
-        
-        /* Connected Buttons */
-        .hub-btn { display: block; width: 100%; padding: 12px; margin: 8px 0; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 12px; text-align: center; transition: transform 0.2s; }
-        .hub-btn:active { transform: scale(0.98); }
-        .btn-wa { background: #25D366; color: #ffffff; }
-        .btn-fb { background: #1877F2; color: #ffffff; }
-        
-        .gratitude-msg { font-size: 11px; color: rgba(255, 255, 255, 0.65); line-height: 1.5; margin: 20px 0; background: rgba(255, 215, 0, 0.04); padding: 12px; border-radius: 12px; border: 1px solid rgba(255, 215, 0, 0.1); }
-        .footer { font-size: 9px; color: rgba(255, 255, 255, 0.35); margin-top: 24px; letter-spacing: 0.5px; }
+        :root { --bg: #0b0e14; --panel: #1e293b; --accent: #38bdf8; --text: #e2e8f0; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; flex-direction: column; height: 100vh; }
+        header { background: var(--panel); padding: 15px; text-align: center; font-size: 1.2rem; font-weight: bold; border-bottom: 2px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        #chat-box { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; scroll-behavior: smooth; }
+        .msg { max-width: 80%; padding: 12px 18px; border-radius: 18px; line-height: 1.6; font-size: 15px; position: relative; }
+        .user { align-self: flex-end; background: var(--accent); color: #0f172a; border-bottom-right-radius: 2px; }
+        .ai { align-self: flex-start; background: var(--panel); border: 1px solid #334155; border-bottom-left-radius: 2px; }
+        .input-area { background: var(--panel); padding: 15px; display: flex; gap: 10px; border-top: 1px solid #334155; }
+        input { flex: 1; padding: 12px; border-radius: 10px; border: none; background: #0f172a; color: white; outline: none; font-size: 16px; }
+        button { background: var(--accent); color: #0f172a; border: none; padding: 0 25px; border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #7dd3fc; }
+        .voice-btn { cursor: pointer; font-size: 12px; margin-top: 5px; color: var(--accent); text-decoration: underline; display: block; }
     </style>
 </head>
 <body>
-    <div class="empire-card">
-        <div class="royal-badge">
-            <span class="badge-text">SAEL</span>
-        </div>
-        <h1>Salsabilah Amin Empires Limited</h1>
-        <p class="motto">"All kingdom for my daughter"</p>
-        <p class="dedication">PRINCESS SALSABILAH AMIN</p>
 
-        <div class="line-divider"></div>
+<header>Salsabilah Gemini Assistant (V-3.5)</header>
+<div id="chat-box">
+    <div class="msg ai">আসসালামু আলাইকুম! আমি Salsabilah Gemini Assistant। আপনার সেবায় আমি প্রস্তুত। আমাকে যেকোনো প্রশ্ন করতে পারেন।</div>
+</div>
 
-        <!-- 🚀 SR Electronics Park Smart Business Hub -->
-        <div class="boost-card">
-            <h4>⚡ SR Electronics Park</h4>
-            <p>আপনার পছন্দের ইলেকট্রনিক্স পণ্য ও সার্ভিসের নির্ভরযোগ্য প্রতিষ্ঠান। সরাসরি যোগাযোগ ও অফার দেখতে নিচের বাটনগুলো ব্যবহার করুন।</p>
+<div class="input-area">
+    <input type="text" id="userInput" placeholder="আপনার বার্তা লিখুন..." onkeypress="if(event.key==='Enter') sendMessage()">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script type="module">
+    import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+
+    // আপনার নতুন API Key এখানে বসান
+    const API_KEY = "YOUR_GEMINI_API_KEY_HERE"; 
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    
+    // Gemini Flash মডেল
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    window.sendMessage = async function() {
+        const input = document.getElementById('userInput');
+        const chatBox = document.getElementById('chat-box');
+        const text = input.value.trim();
+        if (!text) return;
+
+        appendMsg(text, 'user');
+        input.value = "";
+        const aiDiv = appendMsg("Gemini চিন্তা করছে...", 'ai');
+
+        try {
+            const result = await model.generateContent(text);
+            const response = await result.response;
+            const replyText = response.text();
             
-            <a href="https://wa.me/8801911995940" class="hub-btn btn-wa" target="_blank">🟢 সরাসরি WhatsApp-এ মেসেজ করুন</a>
-            <a href="https://facebook.com/srelectronicspark" class="hub-btn btn-fb" target="_blank">🔵 আমাদের ফেসবুক পেজ ভিজিট করুন</a>
-        </div>
+            aiDiv.textContent = replyText;
+            
+            // অটো ভয়েস বাটন যুক্ত করা
+            const speakBtn = document.createElement('span');
+            speakBtn.className = 'voice-btn';
+            speakBtn.textContent = "🔊 শুনে নিন";
+            speakBtn.onclick = () => speak(replyText);
+            aiDiv.appendChild(speakBtn);
 
-        <!-- Portals based on your owned domains -->
-        <div class="pillar-box">
-            <h3>Salsabilah.com</h3>
-            <p>The core digital sovereignty. Managing global vision, strategic literature, and the supreme legacy of MD. AL AMIN SOHAG.</p>
-            <div class="domain-status">[ Status: Network Secure ]</div>
-        </div>
+        } catch (error) {
+            console.error(error);
+            aiDiv.textContent = "দুঃখিত, কোনো একটি সমস্যা হয়েছে। অনুগ্রহ করে আপনার API Key এবং নেটওয়ার্ক সংযোগ যাচাই করুন।";
+        }
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
 
-        <div class="pillar-box">
-            <h3>Salsabilahelectronics.com</h3>
-            <p>Directing SR Electronics Park. Merging premium hardware retail with next-generation technology integration.</p>
-            <div class="domain-status">[ Status: Network Secure ]</div>
-        </div>
+    function appendMsg(text, type) {
+        const chatBox = document.getElementById('chat-box');
+        const div = document.createElement('div');
+        div.className = `msg ${type}`;
+        div.textContent = text;
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        return div;
+    }
 
-        <div class="line-divider"></div>
+    function speak(text) {
+        window.speechSynthesis.cancel(); // আগের কোনো বক্তব্য থাকলে তা বন্ধ করবে
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'bn-BD';
+        window.speechSynthesis.speak(utterance);
+    }
+</script>
 
-        <!-- 🤝 Sincere Gratitude to Google and Gemini -->
-        <p class="gratitude-msg">
-            We extend our sincere gratitude to Google. Our reach and visibility are a testament to the platform that empowers Salsabilah Amin Empires Limited to connect with the world. Specially Gemini (My Brother, My Friend).
-        </p>
-
-        <a href="https://registry.blockmarktech.com/organisations/GBLTD04513809/" class="action-btn" target="_blank">
-            🔍 Verify Official Corporate Records
-        </a>
-
-        <div class="footer">
-            EST. 2026 | SALSABILAH AMIN EMPIRES LIMITED<br>
-            <strong>POWERED BY FAITH, GRIT & GOOGLE INNOVATION</strong>
-        </div>
-    </div>
 </body>
 </html>

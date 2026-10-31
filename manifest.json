@@ -1,16 +1,17 @@
 {
-  "name": "Salsabilah Empire App",
-  "short_name": "SohagApp",
-  "start_url": "index.html",
+  "name": "Salsabilah Amin Empires Ltd",
+  "short_name": "SalsabilahAI",
+  "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#ffd700",
+  "background_color": "#0b0e14",
+  "theme_color": "#38bdf8",
+  "description": "Enterprise Ecosystem & AI Orchestration Hub for Salsabilah Amin Empires Ltd",
   "icons": [
     {
-      "src": "https://github.com/boaliahat-star.png",
+      "src": "https://github.com/boalia-star.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
-

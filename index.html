@@ -1,95 +1,335 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salsabilah Gemini Assistant</title>
-    <style>
-        :root { --bg: #0b0e14; --panel: #1e293b; --accent: #38bdf8; --text: #e2e8f0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; flex-direction: column; height: 100vh; }
-        header { background: var(--panel); padding: 15px; text-align: center; font-size: 1.2rem; font-weight: bold; border-bottom: 2px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        #chat-box { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; scroll-behavior: smooth; }
-        .msg { max-width: 80%; padding: 12px 18px; border-radius: 18px; line-height: 1.6; font-size: 15px; position: relative; white-space: pre-wrap; }
-        .user { align-self: flex-end; background: var(--accent); color: #0f172a; border-bottom-right-radius: 2px; }
-        .ai { align-self: flex-start; background: var(--panel); border: 1px solid #334155; border-bottom-left-radius: 2px; }
-        .input-area { background: var(--panel); padding: 15px; display: flex; gap: 10px; border-top: 1px solid #334155; }
-        input { flex: 1; padding: 12px; border-radius: 10px; border: none; background: #0f172a; color: white; outline: none; font-size: 16px; }
-        button { background: var(--accent); color: #0f172a; border: none; padding: 0 25px; border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        button:hover { background: #7dd3fc; }
-        .voice-btn { cursor: pointer; font-size: 12px; margin-top: 8px; color: var(--accent); text-decoration: underline; display: block; font-weight: bold; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MD. AL AMIN SOHAG | SALSABILAH AMIN EMPIRES</title>
+  <meta name="description" content="MD. AL AMIN SOHAG — Global Strategic Researcher, Tech Entrepreneur, and Founder of Salsabilah Amin Empires. 55+ International Certifications across AI, Data Science, Cloud, and Cybersecurity.">
+  <link rel="icon" type="image/jpeg" href="pavicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --dark-bg: #000810;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --text-silver: #E0E0E0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background-color: var(--dark-bg);
+      color: var(--text-silver);
+      scroll-behavior: smooth;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    /* Top Navigation Bar */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 8, 16, 0.92);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      z-index: 1000;
+    }
+
+    .top-nav a {
+      color: var(--text-silver);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .top-nav a:hover,
+    .top-nav a.active {
+      color: var(--gold);
+    }
+
+    header {
+      min-height: 100vh;
+      padding: 100px 20px 60px;
+      background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('cover.png') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 8vw, 4rem);
+      color: var(--gold);
+      letter-spacing: 7px;
+      margin: 0;
+      font-weight: 900;
+    }
+
+    .sub-title {
+      letter-spacing: 4px;
+      margin-top: 15px;
+      font-size: 0.95rem;
+      color: var(--gold);
+      text-transform: none;
+    }
+
+    .hero-summary {
+      max-width: 760px;
+      margin: 20px auto 0;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-silver);
+      text-transform: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 40px;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 15px;
+      margin-bottom: 30px;
+      transition: 0.5s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+    }
+
+    .card p {
+      text-transform: none;
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    /* 4 Capability Pillars Grid */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin: 40px 0 30px;
+      text-align: left;
+    }
+
+    .pillar-card {
+      background: var(--card-bg);
+      padding: 30px 26px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 14px;
+      transition: 0.4s;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+    }
+
+    .pillar-card h3 {
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 1.5px;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .pillar-issuers {
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 1.5px;
+      margin-bottom: 14px;
+      opacity: 0.9;
+    }
+
+    .pillar-card p {
+      text-transform: none;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: black;
+      padding: 16px 38px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 900;
+      margin: 10px;
+      display: inline-block;
+      letter-spacing: 2px;
+      font-size: 0.82rem;
+      transition: 0.3s;
+    }
+
+    .btn-gold:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+      padding: 14px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 900;
+      margin: 10px;
+      display: inline-block;
+      letter-spacing: 2px;
+      font-size: 0.82rem;
+      transition: 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(212, 175, 55, 0.12);
+    }
+
+    .notice-box {
+      background: rgba(212, 175, 55, 0.05);
+      border: 1px solid var(--gold);
+      padding: 30px;
+      margin-top: 50px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      text-transform: none;
+      line-height: 1.7;
+    }
+
+    footer {
+      padding: 80px 20px;
+      background: #00050a;
+      border-top: 2px solid var(--gold);
+    }
+
+    .verified-badge {
+      color: #1877F2;
+      margin-left: 5px;
+    }
+  </style>
 </head>
 <body>
 
-<header>Salsabilah Gemini AI Core Interface (V-3.5)</header>
+  <nav class="top-nav">
+    <a href="index.html" class="active">HOME</a>
+    <a href="credentials.html">55+ CREDENTIALS</a>
+    <a href="software.html">SOFTWARE</a>
+    <a href="books.html">PUBLICATIONS</a>
+    <a href="media.html">BRIEFING 2026</a>
+  </nav>
 
-<div id="chat-box">
-    <div class="msg ai">আসসালামু আলাইকুম, <b>MD. AL AMIN SOHAG</b>! আমি Salsabilah Gemini Assistant। আপনার সেবায় এবং সাম্রাজ্যের সকল সিস্টেম ব্যবস্থাপনায় আমি প্রস্তুত।</div>
-</div>
+  <header>
+    <div style="border: 2px solid var(--gold); padding: 10px 30px; border-radius: 50px; margin-bottom: 25px; color: var(--gold); font-size: 0.8rem; letter-spacing: 2px;">
+      GLOBAL STRATEGIC RESEARCHER &amp; TECH ENTREPRENEUR
+    </div>
+    <h1 class="hero-title">MD. AL AMIN SOHAG</h1>
+    <p class="sub-title">Global Systems Strategist | Author | Founder of Salsabilah Amin Empires</p>
+    <p class="hero-summary">
+      Backed by 55+ internationally accredited certifications from Google, IBM, Cisco, and Microsoft—bridging applied data science, grid resilience, and enterprise execution.
+    </p>
 
-<div class="input-area">
-    <input type="text" id="userInput" placeholder="আপনার বার্তা বা কমান্ড লিখুন..." onkeypress="if(event.key==='Enter') sendMessage()">
-    <button onclick="sendMessage()">Send</button>
-</div>
+    <div style="margin-top: 30px;">
+      <a href="credentials.html" class="btn-gold">55+ CREDENTIALS PORTFOLIO</a>
+      <a href="media.html" class="btn-outline">STRATEGIC BRIEFING 2026</a>
+    </div>
+  </header>
 
-<script type="module">
-    import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+  <div class="container">
+    <div class="card">
+      <h2 style="color: var(--gold); letter-spacing: 2px;">TECHNICAL AUTHORITY &amp; CAPABILITY PILLARS</h2>
+      <p>
+        Rather than viewing technology in silos, <strong>MD. AL AMIN SOHAG</strong> integrates over 55 international credentials across four core engineering and strategic domains to power proprietary research and commercial operations.
+      </p>
 
-    // আপনার Gemini API Key এখানে প্রদান করুন
-    const API_KEY = "YOUR_GEMINI_API_KEY_HERE"; 
-    const genAI = new GoogleGenerativeAI(API_KEY);
-    
-    // Gemini 2.5 Flash মডেল
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <h3><i class="fas fa-brain"></i> DATA SCIENCE &amp; AI</h3>
+          <div class="pillar-issuers">IBM &bull; GOOGLE &bull; MICROSOFT</div>
+          <p>Statistical modeling, machine learning pipelines, and predictive analytics powering <em>The SOHAG Filter</em> and SKU velocity optimization.</p>
+        </div>
 
-    window.sendMessage = async function() {
-        const input = document.getElementById('userInput');
-        const chatBox = document.getElementById('chat-box');
-        const text = input.value.trim();
-        if (!text) return;
+        <div class="pillar-card">
+          <h3><i class="fas fa-shield-alt"></i> CYBERSECURITY &amp; NETWORK</h3>
+          <div class="pillar-issuers">CISCO (CCNA) &bull; GOOGLE &bull; PALO ALTO</div>
+          <p>Enterprise network architecture, infrastructure defense, and cryptographic security behind the <em>19-Nation Grid Resilience Framework</em>.</p>
+        </div>
 
-        appendMsg(text, 'user');
-        input.value = "";
-        const aiDiv = appendMsg("Gemini AI চিন্তাভাবনা ও প্রসেস করছে...", 'ai');
+        <div class="pillar-card">
+          <h3><i class="fas fa-cloud"></i> CLOUD INFRASTRUCTURE</h3>
+          <div class="pillar-issuers">MICROSOFT AZURE &bull; GOOGLE CLOUD &bull; AWS</div>
+          <p>Hybrid cloud deployment, containerized compute environments, and scalable architecture for cloud-native ERP systems.</p>
+        </div>
 
-        try {
-            const result = await model.generateContent(text);
-            const response = await result.response;
-            const replyText = response.text();
-            
-            aiDiv.innerHTML = replyText.replace(/\n/g, '<br>');
-            
-            // ভয়েস বাটন যুক্তকরণ
-            const speakBtn = document.createElement('span');
-            speakBtn.className = 'voice-btn';
-            speakBtn.textContent = "🔊 শোনান";
-            speakBtn.onclick = () => speak(replyText);
-            aiDiv.appendChild(speakBtn);
+        <div class="pillar-card">
+          <h3><i class="fas fa-chess-king"></i> ENTERPRISE STRATEGY</h3>
+          <div class="pillar-issuers">GOOGLE &bull; DUKE &bull; UNIV. OF VIRGINIA</div>
+          <p>Market engineering, digital ecosystem architecture, and quantitative decision-making guiding SAE Empires Ltd. and SR Electronics Park.</p>
+        </div>
+      </div>
 
-        } catch (error) {
-            console.error(error);
-            aiDiv.textContent = "দুঃখিত, কোনো একটি সমস্যা হয়েছে। আপনার API Key অথবা নেটওয়ার্ক সংযোগ যাচাই করুন।";
-        }
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }
+      <a href="credentials.html" class="btn-gold">EXPLORE ALL 55+ CREDENTIALS</a>
+    </div>
 
-    function appendMsg(text, type) {
-        const chatBox = document.getElementById('chat-box');
-        const div = document.createElement('div');
-        div.className = `msg ${type}`;
-        div.textContent = text;
-        chatBox.appendChild(div);
-        chatBox.scrollTop = chatBox.scrollHeight;
-        return div;
-    }
+    <div class="card">
+      <h2 style="color: var(--gold); letter-spacing: 2px;">GLOBAL RECOGNITION</h2>
+      <p>
+        Recognized as the <strong>'Rising Star of Asia' by Deutsche Welle (DW)</strong>. Currently synergizing industrial resilience and digital transformation across 19 nations.
+      </p>
+    </div>
 
-    function speak(text) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'bn-BD';
-        window.speechSynthesis.speak(utterance);
-    }
-</script>
+    <div class="card">
+      <h2 style="color: var(--gold); letter-spacing: 2px;">AUTHORITY &amp; RESEARCH</h2>
+      <p>
+        Author of <strong>"Circuit to Start Up"</strong> (Goodreads Verified). Strategic contributor to European Commission JRC research and open-source enterprise architectures.
+      </p>
+    </div>
+
+    <div class="notice-box">
+      <h3 style="color: var(--gold); letter-spacing: 2px;"><i class="fas fa-gavel"></i> STRATEGIC IP NOTICE</h3>
+      <p>
+        The proprietary frameworks including <strong>'The Digit Theory'</strong>, <strong>'The SOHAG Filter'</strong>, and the <strong>'19-Nation Grid Resilience Framework'</strong> are the intellectual property of MD. AL AMIN SOHAG. Unauthorized replication is strictly prohibited under international IP law.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <h2 style="color: var(--gold);">MD. AL AMIN SOHAG <i class="fas fa-check-circle verified-badge"></i></h2>
+    <p style="margin-bottom: 20px;">
+      <a href="mailto:seo@salsabilah.com" style="color: var(--gold); text-decoration: none;">SEO@SALSABILAH.COM</a>
+    </p>
+    <div style="color: #777; font-size: 0.75rem; letter-spacing: 1px;">
+      <p>DHAKA &amp; CHUADANGA, BANGLADESH | SALSABILAH.COM</p>
+      <p>&copy; 2026 SALSABILAH AMIN EMPIRES | ALL RIGHTS RESERVED</p>
+      <div style="margin-top: 30px;">
+        <a href="credentials.html" class="btn-gold">55+ CREDENTIALS</a>
+        <a href="media.html" class="btn-outline">STRATEGIC BRIEFING 2026</a>
+      </div>
+      <div style="margin-top: 30px;">
+        <a href="/warranty" style="color: var(--gold); text-decoration: none; font-weight: bold; letter-spacing: 3px; font-size: 0.8rem; border-bottom: 1px solid var(--gold); padding-bottom: 5px; transition: 0.3s;">
+          <i class="fas fa-shield-halved"></i> VERIFY GLOBAL WARRANTY PORTAL
+        </a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
